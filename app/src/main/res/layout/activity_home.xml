@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="117dp"
-        android:text="Welcame to Home"
+        android:text="Welcome to Home"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/logoutBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
@@ -31,7 +31,7 @@
         app:strokeColor="@color/black"
         app:strokeWidth="1dp"
         tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="311dp" />
+        tools:layout_editor_absoluteY="311dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

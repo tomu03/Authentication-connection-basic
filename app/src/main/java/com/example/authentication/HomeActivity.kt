@@ -1,15 +1,30 @@
 package com.example.authentication
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
+import com.example.authentication.databinding.ActivityHomeBinding
+import com.example.authentication.databinding.ActivityMainBinding
+import com.example.authentication.viewmodels.AuthViewModel
 
 class HomeActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_home)
+    private lateinit var viewModel: AuthViewModel
+    private lateinit var binding: ActivityHomeBinding
+    override fun onCreate(savedInstanceState: Bundle?) {
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        super.onCreate(savedInstanceState)
+        setContentView(binding.root)
+
+        viewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
+
+        binding.logoutBtn.setOnClickListener {
+            viewModel.signout()
+            startActivity(Intent(this,LoginActivity::class.java))
+        }
     }
 }

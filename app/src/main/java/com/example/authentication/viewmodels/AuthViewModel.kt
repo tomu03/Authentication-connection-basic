@@ -11,29 +11,30 @@ class AuthViewModel : ViewModel() {
     fun signup(email: String, password: String): LiveData<String> {
         val result = MutableLiveData<String>()
         auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(){
-            if (it.isSuccessful) {
-                result.value = "Sign up successful"
-            } else {
-                result.value = "Sign up failed : $(it.exception?.message)"
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    result.value = "Sign up successful"
+                } else {
+                    result.value = "Sign up failed: ${it.exception?.message}"
+                }
             }
-        }
         return result
     }
 
     fun signin(email: String, password: String): LiveData<String> {
         val result = MutableLiveData<String>()
         auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener{
-            if (it.isSuccessful) {
-                result.value = "Sign in successful"
-            } else {
-                result.value = "Sign in failed: $(it.exception?.message)"
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    result.value = "Sign in successful"
+                } else {
+                    result.value = "Sign in failed: ${it.exception?.message}"
+                }
             }
-        }
         return result
     }
-    fun signout(){
+
+    fun signout() {
         auth.signOut()
     }
 }
